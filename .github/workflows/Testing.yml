@@ -35,4 +35,5 @@ jobs:
         run: |
           CI="" npm run build
       - name: Run Tests
-          npm run test
+        run: |
+          npm run test --passWithNoTests
