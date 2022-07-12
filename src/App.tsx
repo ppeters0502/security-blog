@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './components/About';
 import Home from './components/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Blog from './components/Blog';
 
 function App() {
   return (
@@ -11,10 +12,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>
-
     </div>
   );
 }
