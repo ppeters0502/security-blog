@@ -1,7 +1,9 @@
 ---
+id: 1
 title: Purpose of my new blog
 description: Hoping to explain the purpose of this site, and what you can expect.
-publishedDate: 2022/07/12
+publishedDate: 07/12/2022
+featureImage: https://i.imgur.com/x9tDpoNh.jpg
 tags:
   - blog
   - bloviating

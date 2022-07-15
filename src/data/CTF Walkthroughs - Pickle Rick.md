@@ -1,10 +1,9 @@
 ---
+id: 3
 title: CTF Walkthroughs - Pickle Rick
-updated: 2022-07-07 02:49:01Z
-created: 2022-07-06 02:25:04Z
-latitude: 41.25236340
-longitude: -95.99798830
-altitude: 0.0000
+description: My first walkthrough on one of the beginner TryHackMe rooms, Pickle Rick
+publishedDate: 07/15/2022
+featureImage: https://i.imgur.com/3OXdZjmh.png
 ---
 
 ## Intro
