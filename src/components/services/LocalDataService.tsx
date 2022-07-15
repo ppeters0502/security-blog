@@ -2,15 +2,16 @@ import matter from 'gray-matter';
 import { frontMatterPost } from '../../types/frontMatterPost';
 
 export module LocalDataService {
-  export function getAllPostsWithFrontMatter() {
-    const fs = require('fs');
-    const path = require('path');
+  export async function getAllPostsWithFrontMatter() {
 
-    const files = fs.readdirSync('../../data', 'utf-8');
+    const importAll = (r: any) => r.keys().map(r);
+    const markDownFiles = importAll(require.context('../../data', true, /\.md$/));
+
+    console.log(JSON.stringify(markDownFiles));
+    const files = await Promise.all(markDownFiles.map((file: any) => fetch(file.default).then((res) => res.text())));
     const _returnData: frontMatterPost[] = new Array<frontMatterPost>();
     files.forEach((file: string) => {
-      const source = fs.readFileSync(path.join('../../data/', file), 'utf-8');
-      const { data, content } = matter(source);
+      const { data, content } = matter(file);
       _returnData.push({
         metaData: data,
         content: content,
@@ -20,3 +21,4 @@ export module LocalDataService {
     return _returnData;
   }
 }
+
