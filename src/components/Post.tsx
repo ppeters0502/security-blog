@@ -3,9 +3,9 @@ import { Container } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 
 interface propsType {
-  title: string;
-  publishedDate: string;
-  content: string;
+  title: string | undefined;
+  publishedDate: string | undefined;
+  content: string | undefined;
 }
 
 const Post = (props: propsType) => {
@@ -13,8 +13,7 @@ const Post = (props: propsType) => {
     <Container>
       <h2>{props.title}</h2>
       <h4>{props.publishedDate}</h4>
-
-      <ReactMarkdown>{props.content}</ReactMarkdown>
+      {props.content && <ReactMarkdown>{props.content}</ReactMarkdown>}
     </Container>
   );
 };
