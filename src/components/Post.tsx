@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 
 interface propsType {
@@ -13,7 +13,9 @@ const Post = (props: propsType) => {
     <Container>
       <h2>{props.title}</h2>
       <h4>{props.publishedDate}</h4>
-      {props.content && <ReactMarkdown>{props.content}</ReactMarkdown>}
+      {props.content && <ReactMarkdown components={{
+        img: ({ node, ...props }) => <><Row style={{ marginTop: 25 }}><Col><img alt={props.alt} src={props.src} style={{ maxWidth: '50vw' }} /></Col></Row></>
+      }}>{props.content}</ReactMarkdown>}
     </Container>
   );
 };

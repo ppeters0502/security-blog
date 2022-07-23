@@ -136,3 +136,7 @@ There's our third ingredient, just time to print this out, and we're all wrapped
 ![6a6acc62433bea2d07a2a592eed9637a.png](https://i.imgur.com/r3ZFZVih.png)
 
 All Set!!
+
+## Conclusion
+
+This was a really fun TryHackMe room! It wasn't the most technically challenging as far as security concepts, but I definitely had to think and had to do a little more than just running the same commands and scripts that you normally have to run each TryHackMe room.
