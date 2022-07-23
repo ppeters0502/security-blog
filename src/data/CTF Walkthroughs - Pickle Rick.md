@@ -8,7 +8,9 @@ featureImage: https://i.imgur.com/3OXdZjmh.png
 
 ## Intro
 
-This is my write up for the Pickle Rick room on tryhackme.com
+For my very first walkthrough on this site, I tried to start off with an easier walkthrough. I've been working through the rooms and modules in TryHackMe quite a bit, so I went with
+the Pickle Rick room on tryhackme.com. This one was marked easy by the site, and also had a number of walk throughs already done in case I got stuck.
+Here goes!
 
 ## Recon
 
