@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { frontMatterPost } from '../types/frontMatterPost';
 import Blog from './Blog';
+import Footer from './Footer';
 import Header from './Header';
 import Post from './Post';
 import { LocalDataService } from './services/LocalDataService';
@@ -37,6 +38,7 @@ const BlogContainer = () => {
         {singlePost && <Post title={title} publishedDate={publishedDate} content={content} />}
         {!singlePost && <Blog posts={posts} onPostSelection={onPostSelection} />}
       </Container>
+      <Footer />
     </>
   );
 };
