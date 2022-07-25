@@ -3,18 +3,21 @@ import { Row, Col, Container } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <Row className="footer bg-dark text-white" style={{ marginTop: '50px' }}>
-      <Container>
-        <Col md={{ span: 6, offset: 3 }}>
-          <p style={{ textAlign: 'center', marginTop: '10px' }}>
-            © 2022 Copyright:{' '}
-            <a className="text-white" href="/">
-              Scream Into The Void Today
-            </a>
-          </p>
-        </Col>
-      </Container>
-    </Row>
+    <footer className='footer py-2 bg-dark text-white fixed-bottom' style={{ marginTop: '25px' }}>
+      <Row>
+        <Container>
+          <Col md={{ span: 6, offset: 3 }}>
+            <p style={{ textAlign: 'center' }}>
+              © 2022 Copyright:{' '}
+              <a className="text-white" href="/">
+                Scream Into The Void Today
+              </a>
+            </p>
+          </Col>
+        </Container>
+      </Row>
+    </footer>
+
   );
 };
 

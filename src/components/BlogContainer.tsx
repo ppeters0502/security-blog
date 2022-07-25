@@ -34,7 +34,7 @@ const BlogContainer = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container >
         {singlePost && <Post title={title} publishedDate={publishedDate} content={content} />}
         {!singlePost && <Blog posts={posts} onPostSelection={onPostSelection} />}
       </Container>
