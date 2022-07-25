@@ -10,7 +10,7 @@ interface propsType {
 
 const Post = (props: propsType) => {
   return (
-    <Container>
+    <Container style={{ marginBottom: '20vh' }}>
       <h2>{props.title}</h2>
       <h4>{props.publishedDate}</h4>
       {props.content && <ReactMarkdown components={{
