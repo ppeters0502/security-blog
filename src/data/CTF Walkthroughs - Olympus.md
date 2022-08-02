@@ -7,7 +7,7 @@ featureImage: https://i.imgur.com/DpgtMWbh.png
 ---
 
 ## Intro
-This is my writeup for the Olympus Room on TryHackMe.com.
+This is my writeup for the [Olympus Room](https://tryhackme.com/room/olympusroom) on [TryHackMe.com](https://tryhackme.com).
 Most of the rooms I've done so far on TryHackMe were either part of a learning series, or they have a specific vulnerability that I'm trying to learn more about. This one came up on my TryHackMe dashboard as "Recently posted", and was the first one I've ever just dove in on with no prior knowledge.
 I'll be honest, there weren't any writeups published when I started this one, but the room creator did post a Hints page that I had to reference a couple times when I was getting stuck. You'll see a little bit of that throughout this walkthrough. This room also took me a good while, and I had to stretch grabbing screenshots over 4 days, so you'll see some of the IP addresses change for the target machine and AttackBox machine. Alright, lets get started!
 
@@ -113,10 +113,11 @@ Really the only columns in this I'm interested in are the user_name, password an
 ![0bb995562c9e75be7215f97406be3f35.png](https://i.imgur.com/nTsSU30.png)
 It's a little hard to read on the screen, but I'm able to copy and paste. The emails I'm going to keep ahold of for now, and I'm going to try and crack the passwords using john the ripper
 | user_name | user_password | user_email |
-|-----------|---------------|------------|
+|:-----------:|:---------------:|:------------:|
 | prometheus | $2y$10$YC6uoMwK9VpB5QL513vfLu1RV2sgBf01c0lzPHcz1qK2EArDvnj3C | prometheus@olympus.thm |
 | root | $2y$10$lcs4XWc5yjVNsMb4CUBGJevEkIuWdZN3rsuKWHCc.FGtapBAfW.mK | root@chat.olympus.thm |
 | zeus | $2y$10$cpJKDXh2wlAI5KlCsUaLCOnf0g5fiG0QSUS53zp/r0HMtaj6rT4lC | zeus@chat.olympus.thm |
+
 
 I grab one of the hashes and load it into TunnelsUP.com's Hash Analyzer, to try and figure out what kind of hash it is.
 ![7b35427391db1dcf460efa1a586d6b79.png](https://i.imgur.com/m3oenC2.png)Looks like bcrypt!
@@ -169,7 +170,7 @@ Ok, so there's a uname (username?) message and file... Lets see what sort of dat
 
 The email addresses! I had almost completely forgotten about those after grabbing the user data!!
 The emails had @chat.olympus.thm, I bet the chat messages are in the chat subdomain! 
-<br/>*facepalm*...<br/>
+*facepalm*...
 I update the /etc/hosts page to link chat.olympus.thm to the machines IP. I then go to chat.olympus.thm, and voila!
 
 ![ea36cd647369ea1969ca957dd688665b.png](https://i.imgur.com/fsuD4uT.png)
