@@ -11,8 +11,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<BlogContainer />} />
-          {/* <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<BlogContainer />} /> */}
+          <Route path="/blog/:id" element={<BlogContainer />} />
           <Route path="*" element={<BlogContainer />} />
         </Routes>
       </Router>
