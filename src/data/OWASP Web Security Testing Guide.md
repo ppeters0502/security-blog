@@ -35,7 +35,7 @@ This guide is pretty much exactly what I need, a formalized approach to performi
 * Client-side Testing
 * API Testing
 
-There's alos several appendices of some additional suggested reading, testing tools, history and more!
+There's also several appendices of some additional suggested reading, testing tools, history and more!
 
 I'm currently working off of a spreadsheet adapted from the guide that was posted on github by [tanprathan](https://github.com/tanprathan/OWASP-Testing-Checklist). This is the same checklist, but with additional options for feedback and status checks so that it's easy to keep track of what more needs to be done on a given app that I'm testing.
 
