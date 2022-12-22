@@ -19,5 +19,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ppeters0502/bomber-action@v0.1.0-beta
+      - uses: ppeters0502/bomber-action@v0.1.1-beta
         name: Trigger Bomber
