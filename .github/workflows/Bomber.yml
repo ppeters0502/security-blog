@@ -20,4 +20,4 @@ jobs:
 
     steps:
       - uses: ppeters0502/bomber-action@v0.1.0-beta
-      - name: Trigger Bomber
+        name: Trigger Bomber
