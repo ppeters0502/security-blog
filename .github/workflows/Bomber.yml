@@ -1,6 +1,6 @@
 # This is a basic workflow for when submitting PRs to validate that everything is working
 
-name: SBOM Scan
+name: SBOM Build
 
 # Controls when the workflow will run
 on:
