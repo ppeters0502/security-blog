@@ -22,7 +22,7 @@ const Blog = (props: propsType) => {
                     props.onPostSelection(post);
                   }}
                 >
-                  <Card.Img variant="top" src={post.featuredImage} />
+                  <Card.Img variant="top" src={post.featureImage} />
                   <Card.Body>
                     <Card.Title>{post.metaData['title']}</Card.Title>
                     <Card.Text>
