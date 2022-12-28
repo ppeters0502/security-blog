@@ -14,7 +14,7 @@ const Blog = (props: propsType) => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {props.posts.length > 0 &&
             props.posts.map((post, postIndex) => (
-              <Col>
+              <Col key={postIndex}>
                 <Card
                   bg={'light'}
                   style={{ margin: '50px', cursor: 'pointer', width: '24rem' }}
@@ -22,7 +22,7 @@ const Blog = (props: propsType) => {
                     props.onPostSelection(post);
                   }}
                 >
-                  <Card.Img variant="top" src={post.featuredImage} />
+                  <Card.Img variant="top" src={post.featureImage} />
                   <Card.Body>
                     <Card.Title>{post.metaData['title']}</Card.Title>
                     <Card.Text>
