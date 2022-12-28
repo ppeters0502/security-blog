@@ -11,7 +11,7 @@ export module LocalDataService {
   export async function getAllPostsWithFrontMatter() {
     const importAll = (r: any) => r.keys().map(r);
     const markDownFiles = importAll(require.context('../../data', true, /\.md$/));
-    const files = await Promise.all(markDownFiles.map((file: any) => fetch(file.default).then((res) => res.text())));
+    const files = await Promise.all(markDownFiles.map((file: any) => fetch(file).then((res) => res.text())));
     const _returnData: frontMatterPost[] = new Array<frontMatterPost>();
     files.forEach(async (file: string) => {
       unified()
@@ -20,8 +20,12 @@ export module LocalDataService {
         .use(remarkFrontmatter, ['yaml'])
         .use(extract, { yaml: yaml, remove: true })
         .process(file, (err, vfile: VFile | undefined) => {
+          if (err) {
+            console.log(err);
+          }
           if (vfile !== undefined) {
             console.log('ID: ' + vfile.data['id'] + ' featureImage: ' + vfile.data['featureImage']);
+            console.log('vfile.data: ' + vfile.data);
             let metaData = vfile.data as unknown as frontMatterPost;
             console.log(metaData.featureImage);
             _returnData.push({

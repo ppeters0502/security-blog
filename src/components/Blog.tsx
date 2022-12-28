@@ -14,7 +14,7 @@ const Blog = (props: propsType) => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {props.posts.length > 0 &&
             props.posts.map((post, postIndex) => (
-              <Col>
+              <Col key={postIndex}>
                 <Card
                   bg={'light'}
                   style={{ margin: '50px', cursor: 'pointer', width: '24rem' }}
