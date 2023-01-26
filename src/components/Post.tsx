@@ -19,7 +19,7 @@ const Post = (props: propsType) => {
           components={{
             img: ({ node, ...props }) => (
               <>
-                <Row style={{ marginTop: 25 }}>
+                <Row style={{ marginTop: 25, marginBottom: 25 }}>
                   <Col>
                     <img alt={props.alt} src={props.src} style={{ maxWidth: '50vw' }} />
                   </Col>
