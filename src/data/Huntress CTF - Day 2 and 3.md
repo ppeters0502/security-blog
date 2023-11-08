@@ -1,7 +1,7 @@
 ---
 id: 11
 title: Huntress CTF - Day 2 and 3
-publishedDate: 10/05/2022
+publishedDate: 10/05/2023
 featureImage: https://i.imgur.com/MsHkggqh.png
 ---
 
