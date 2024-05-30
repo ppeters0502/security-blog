@@ -3,6 +3,8 @@ id: 13
 title: 100 Days of Code - The Beginning
 publishedDate: 05/29/2024
 featureImage: https://i.imgur.com/svqO1bs.gif
+tags:
+  - 100 Days of Code
 ---
 ## Intro
 Hello Internet!
@@ -23,7 +25,7 @@ I'm missing a very specific feeling though. That feeling of being neck-deep in a
 
 So to (hopefully) help kick this sort of effort off, I'm taking on a new challenge! 
 
-### As of this day (May 29th, 2024), I'm pubicly committing to spending at least 1 hour every day for the next 100 days writing code as part of the [#100DaysOfCode](https://www.100daysofcode.com/) online challenge!
+## As of this day (May 29th, 2024), I'm publicly committing to spending at least 1 hour every day for the next 100 days writing code as part of the [#100DaysOfCode](https://www.100daysofcode.com/) online challenge!
 
 ## How this challenge works
 This challenge is pretty straightforward. The description on 100daysofcode.com say there are only two requirements:

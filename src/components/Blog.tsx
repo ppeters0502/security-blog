@@ -4,6 +4,7 @@ import { frontMatterPost } from '../types/frontMatterPost';
 
 interface propsType {
   posts: frontMatterPost[];
+  category: string;
   onPostSelection: (post: frontMatterPost) => void;
 }
 
@@ -11,7 +12,8 @@ const Blog = (props: propsType) => {
   return (
     <>
       <Container>
-        <Row xs={1} md={2} lg={3} className="g-4">
+        <h3>The category is {props.category}</h3>
+        <Row xs={1} md={2} lg={3} className='g-4'>
           {props.posts.length > 0 &&
             props.posts.map((post, postIndex) => (
               <Col key={postIndex}>
@@ -22,7 +24,7 @@ const Blog = (props: propsType) => {
                     props.onPostSelection(post);
                   }}
                 >
-                  <Card.Img variant="top" src={post.featureImage} />
+                  <Card.Img variant='top' src={post.featureImage} />
                   <Card.Body>
                     <Card.Title>{post.metaData['title']}</Card.Title>
                     <Card.Text>
