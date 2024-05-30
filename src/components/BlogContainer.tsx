@@ -16,6 +16,7 @@ const BlogContainer = () => {
   const [publishedDate, setPublishedDate] = React.useState<string>('');
   const [content, setContent] = React.useState<string>('');
   const [postCategory, setPostCategory] = React.useState<string>('');
+  const [categoryFilter, setCategoryFilter] = React.useState<string>('');
 
   const getIdNumber = (): number => {
     var _idNumber: number = id ? Number(id) : 0;
@@ -23,18 +24,25 @@ const BlogContainer = () => {
   };
 
   const getPostCategory = (): string => {
-    debugger;
     var _postCategory: number = category ? Number(category) : 0;
     var _result: string = '';
     if (_postCategory > 0) {
-      if (_postCategory === 1) {
-        _result = 'CTF WalkThroughs';
-      }
-      if (_postCategory === 2) {
-        _result = '100 Days of Code';
+      switch (_postCategory) {
+        case 1:
+          _result = 'ctf_walkthroughs';
+          break;
+        case 2:
+          _result = '100_days';
+          break;
+        case 3:
+          _result = 'misc.';
+          break;
+        default:
+          _result = 'all';
+          break;
       }
     } else {
-      _result = 'All';
+      _result = 'all';
     }
     return _result;
   };
@@ -59,24 +67,74 @@ const BlogContainer = () => {
           setPosts(response[0]);
         }
       } else {
-        if (category && _postCategory !== 'All') {
+        if (category && _postCategory !== 'all') {
           let _posts: frontMatterPost[] = new Array<frontMatterPost>();
-          _posts.forEach((_post: frontMatterPost) => {
-            let _tags = _post.metaData['tags'];
-            _tags.forEach((_tag: string) => {
-              console.log('tag: ' + _tag);
-              if (_tag === _postCategory) {
-                _posts.push(_post);
-              }
-            });
-            setPosts(_posts);
+          response[0].forEach((_post: frontMatterPost) => {
+            let _tags: string[] = new Array<string>();
+            if (_post.metaData['tags']) {
+              _tags = _post.metaData['tags'];
+              _tags.forEach((_tag: string) => {
+                console.log('tag: ' + _tag);
+                if (_tag === _postCategory) {
+                  _posts.push(_post);
+                }
+              });
+            }
           });
+          setPosts(_posts);
+          categoryFilterSelection(_postCategory);
         } else {
           setPosts(response[0]);
+          categoryFilterSelection('all');
         }
       }
     });
   }, []);
+
+  const categoryFilterSelection = (category: string) => {
+    switch (category) {
+      case 'all':
+        setCategoryFilter('All');
+        break;
+      case '100_days':
+        setCategoryFilter('100 Days of Code');
+        break;
+      case 'ctf_walkthroughs':
+        setCategoryFilter('CTF Walkthroughs');
+        break;
+      case 'misc.':
+        setCategoryFilter('Miscellaneous');
+        break;
+      default:
+        setCategoryFilter('All');
+        break;
+    }
+  };
+
+  const onCategorySelection = (category: string) => {
+    Promise.all([LocalDataService.getAllPostsWithFrontMatter()]).then((response) => {
+      if (category !== 'all') {
+        let _posts: frontMatterPost[] = new Array<frontMatterPost>();
+        response[0].forEach((_post: frontMatterPost) => {
+          let _tags: string[] = new Array<string>();
+          if (_post.metaData['tags']) {
+            _tags = _post.metaData['tags'];
+            _tags.forEach((_tag: string) => {
+              console.log('tag: ' + _tag);
+              if (_tag === category) {
+                _posts.push(_post);
+              }
+            });
+          }
+        });
+        setPosts(_posts);
+      } else {
+        setPosts(response[0]);
+      }
+      setPostCategory(category);
+      categoryFilterSelection(category);
+    });
+  };
 
   const onPostSelection = (post: frontMatterPost) => {
     setTitle(post.metaData['title']);
@@ -94,7 +152,7 @@ const BlogContainer = () => {
       <Header />
       <Container>
         {singlePost && <Post title={title} publishedDate={publishedDate} content={content} />}
-        {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} />}
+        {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} onCategorySelection={onCategorySelection} categoryFilter={categoryFilter} />}
       </Container>
       <Footer />
     </>

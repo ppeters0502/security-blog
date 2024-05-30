@@ -4,6 +4,8 @@ title: CTF Walkthroughs - Photobomb
 description: My walkthrough of the Photobomb machine on hackthebox.com
 publishedDate: 01/25/2023
 featureImage: https://i.imgur.com/LbooXdNh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

@@ -3,6 +3,8 @@ id: 14
 title: 100 Days of Code - Day One
 publishedDate: 05/29/2024
 featureImage: https://i.imgur.com/vBuk9PCh.png
+tags:
+  - 100_days
 ---
 ## Intro
 Hello Internet!

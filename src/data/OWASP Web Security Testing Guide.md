@@ -4,6 +4,8 @@ title: OWASP Web Security Testing Guide
 description: Quick blurb about OWASP and pentesting
 publishedDate: 10/26/2022
 featureImage: https://i.imgur.com/fmUVKdeh.png
+tags:
+  - misc.
 ---
 
 ## Intro

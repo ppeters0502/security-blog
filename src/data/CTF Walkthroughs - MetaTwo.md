@@ -4,6 +4,8 @@ title: CTF Walkthroughs - MetaTwo
 description: My walkthrough of the MetaTwo machine on HackTheBox.com
 publishedDate: 02/11/2023
 featureImage: https://i.imgur.com/8NSIwZRh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

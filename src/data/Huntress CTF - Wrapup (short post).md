@@ -3,6 +3,8 @@ id: 12
 title: Huntress CTF - Wrapup
 publishedDate: 11/08/2023
 featureImage: https://i.imgur.com/y91FG1nh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

@@ -4,6 +4,8 @@ title: CTF Walkthroughs - Lame
 description: My walkthrough of the Lame machine on HackTheBox.com
 publishedDate: 02/04/2023
 featureImage: https://i.imgur.com/tK4ptaWh.png
+tags:
+  - ctf_walkthroughs
 ---
 ## Intro
 Hello Internet!
