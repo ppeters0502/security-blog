@@ -3,6 +3,8 @@ id: 13
 title: 100 Days of Code - The Beginning
 publishedDate: 05/29/2024
 featureImage: https://i.imgur.com/svqO1bs.gif
+tags:
+  - 100_days
 ---
 ## Intro
 Hello Internet!

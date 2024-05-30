@@ -4,6 +4,8 @@ title: CTF Walkthroughs - Agent T
 description: My walkthrough of the Agent T room in TryHackMe.com
 publishedDate: 08/08/2022
 featureImage: https://i.imgur.com/hA5fy8jh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

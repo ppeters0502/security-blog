@@ -4,6 +4,8 @@ title: Certificates in Security
 description: Some brief thoughts on working through security certifications
 publishedDate: 06/07/2023
 featureImage: https://i.imgur.com/nREAzO2h.png
+tags:
+  - misc.
 ---
 
 ## Intro

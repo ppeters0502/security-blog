@@ -4,6 +4,8 @@ title: CTF Walkthroughs - Pickle Rick
 description: My first walkthrough on one of the beginner TryHackMe rooms, Pickle Rick
 publishedDate: 07/15/2022
 featureImage: https://i.imgur.com/3OXdZjmh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

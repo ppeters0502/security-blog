@@ -7,12 +7,13 @@ import BlogContainer from './components/BlogContainer';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
         <Routes>
-          <Route path="/" element={<BlogContainer />} />
-          <Route path="/blog/:id" element={<BlogContainer />} />
-          <Route path="*" element={<BlogContainer />} />
+          <Route path='/' element={<BlogContainer />} />
+          <Route path='/blog/:id' element={<BlogContainer />} />
+          <Route path='/category/:category' element={<BlogContainer />} />
+          <Route path='*' element={<BlogContainer />} />
         </Routes>
       </Router>
     </div>

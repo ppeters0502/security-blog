@@ -5,8 +5,7 @@ description: Hoping to explain the purpose of this site, and what you can expect
 publishedDate: 07/12/2022
 featureImage: https://i.imgur.com/Q2MJOMih.jpg
 tags:
-  - blog
-  - bloviating
+  - misc.
 ---
 
 Hello there!

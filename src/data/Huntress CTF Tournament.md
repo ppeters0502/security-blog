@@ -4,6 +4,8 @@ title: Huntress CTF Tournament
 description: Cybersecurity Awareness Month and a new CTF!
 publishedDate: 10/03/2023
 featureImage: https://i.imgur.com/x0pPeKeh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro

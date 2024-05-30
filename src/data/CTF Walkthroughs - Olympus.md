@@ -4,6 +4,8 @@ title: CTF Walkthroughs - Olympus
 description: My walkthrough of the Olympus room in TryHackMe.com
 publishedDate: 07/26/2022
 featureImage: https://i.imgur.com/DpgtMWbh.png
+tags:
+  - ctf_walkthroughs
 ---
 
 ## Intro
