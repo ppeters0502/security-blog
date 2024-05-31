@@ -1,7 +1,7 @@
 ---
 id: 15
 title: 100 Days of Code - Day Two
-publishedDate: 05/29/2024
+publishedDate: 05/30/2024
 featureImage: https://i.imgur.com/9X6Fjhjh.png
 tags:
   - 100_days
