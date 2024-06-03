@@ -7,6 +7,9 @@ import Footer from './Footer';
 import Header from './Header';
 import Post from './Post';
 import { LocalDataService } from './services/LocalDataService';
+import { CommentService } from '../services/API/CommentService';
+import { AxiosResponse } from 'axios';
+import { SingleCommentProps } from '../types/SingleCommentProps';
 
 const BlogContainer = () => {
   const { id, category } = useParams();
@@ -17,6 +20,7 @@ const BlogContainer = () => {
   const [content, setContent] = React.useState<string>('');
   const [postCategory, setPostCategory] = React.useState<string>('');
   const [categoryFilter, setCategoryFilter] = React.useState<string>('');
+  const [postComments, setPostComments] = React.useState<SingleCommentProps[]>(new Array<SingleCommentProps>());
 
   const getIdNumber = (): number => {
     var _idNumber: number = id ? Number(id) : 0;
@@ -54,6 +58,16 @@ const BlogContainer = () => {
     console.log('ID Number: ' + _idNumber);
     Promise.all([LocalDataService.getAllPostsWithFrontMatter()]).then((response) => {
       if (id && _idNumber > 0) {
+        // Get Comments from single post
+        CommentService.getCommentsFromPost(_idNumber).then((response: AxiosResponse<SingleCommentProps[]>) => {
+          let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
+          response.data.forEach((_comment: SingleCommentProps) => {
+            if (_comment.postID === _idNumber) {
+              _publishedComments.push(_comment);
+            }
+          });
+          setPostComments(_publishedComments);
+        });
         let _posts: frontMatterPost[] = response[0];
         _posts.forEach((_post: frontMatterPost) => {
           if (_post.id === _idNumber) {
@@ -137,10 +151,30 @@ const BlogContainer = () => {
   };
 
   const onPostSelection = (post: frontMatterPost) => {
+    // Get Comments from single post
+    CommentService.getCommentsFromPost(post.id).then((response: AxiosResponse<SingleCommentProps[]>) => {
+      let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
+      response.data.forEach((_comment: SingleCommentProps) => {
+        if (_comment.postID === post.id) {
+          _publishedComments.push(_comment);
+        }
+      });
+      setPostComments(_publishedComments);
+    });
     setTitle(post.metaData['title']);
     setPublishedDate(post.metaData['publishedDate']);
     setContent(post.content);
     setSinglePost(true);
+  };
+
+  const onCommentSubmission = (comment: SingleCommentProps) => {
+    CommentService.createComment(comment).then((response: AxiosResponse) => {
+      if (response.statusText === 'success') {
+        let _publishedComments = postComments;
+        _publishedComments.push(comment);
+        setPostComments(_publishedComments);
+      }
+    });
   };
 
   //     title: string;
@@ -151,7 +185,7 @@ const BlogContainer = () => {
     <>
       <Header />
       <Container>
-        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} />}
+        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} comments={postComments} onCommentSubmission={onCommentSubmission} />}
         {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} onCategorySelection={onCategorySelection} categoryFilter={categoryFilter} />}
       </Container>
       <Footer />

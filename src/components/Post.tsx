@@ -9,23 +9,11 @@ interface propsType {
   title: string | undefined;
   publishedDate: string | undefined;
   content: string | undefined;
+  comments: SingleCommentProps[];
+  onCommentSubmission: (comment: SingleCommentProps) => void;
 }
 
 const Post = (props: propsType) => {
-  const comments: SingleCommentProps[] = [
-    {
-      text: 'This is words.',
-      postID: 4,
-      author: 'Chuck Mangione',
-      postDate: '6/2/2024',
-    },
-    {
-      text: 'This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words.',
-      postID: 4,
-      author: 'AJ HamHands',
-      postDate: '5/20/2024',
-    },
-  ];
   return (
     <Container style={{ marginBottom: '20vh' }}>
       <h2>{props.title}</h2>
@@ -48,7 +36,8 @@ const Post = (props: propsType) => {
           {props.content}
         </ReactMarkdown>
       )}
-      <CommentSection comments={comments} />
+      {props.comments.length > 0 && <h2>Comments</h2>}
+      <CommentSection comments={props.comments} onSubmitComment={props.onCommentSubmission} />
     </Container>
   );
 };
