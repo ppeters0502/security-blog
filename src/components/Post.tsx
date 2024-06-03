@@ -2,6 +2,8 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import CommentSection from './CommentSection';
+import { SingleCommentProps } from '../types/SingleCommentProps';
 
 interface propsType {
   title: string | undefined;
@@ -10,6 +12,20 @@ interface propsType {
 }
 
 const Post = (props: propsType) => {
+  const comments: SingleCommentProps[] = [
+    {
+      text: 'This is words.',
+      postID: 4,
+      author: 'Chuck Mangione',
+      postDate: '6/2/2024',
+    },
+    {
+      text: 'This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words.',
+      postID: 4,
+      author: 'AJ HamHands',
+      postDate: '5/20/2024',
+    },
+  ];
   return (
     <Container style={{ marginBottom: '20vh' }}>
       <h2>{props.title}</h2>
@@ -32,6 +48,7 @@ const Post = (props: propsType) => {
           {props.content}
         </ReactMarkdown>
       )}
+      <CommentSection comments={comments} />
     </Container>
   );
 };

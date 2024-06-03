@@ -9,7 +9,11 @@ interface propsType {
 }
 
 const CommentSection = (props: propsType) => {
-  return <Container>{props.comments.length > 0 && props.comments.map((comment) => <SingleComment text={comment.text} postID={comment.postID} />)}</Container>;
+  return (
+    <Container>
+      {props.comments.length > 0 && props.comments.map((comment) => <SingleComment text={comment.text} postID={comment.postID} author={comment.author} postDate={comment.postDate} />)}
+    </Container>
+  );
 };
 
 export default CommentSection;

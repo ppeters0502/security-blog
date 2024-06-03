@@ -1,4 +1,6 @@
-export interface SingleComment {
+export interface SingleCommentProps {
     text: string
-    postID: number
+    postID: number,
+    author: string
+    postDate: string
 }

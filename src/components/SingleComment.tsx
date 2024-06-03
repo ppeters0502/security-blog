@@ -5,13 +5,11 @@ import { SingleCommentProps } from '../types/SingleCommentProps';
 
 const SingleComment = (commentProps: SingleCommentProps) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '35rem' }}>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className='mb-2 text-muted'>Card Subtitle</Card.Subtitle>
+        <Card.Title>{commentProps.author}</Card.Title>
+        <Card.Subtitle className='mb-2 text-muted'>{commentProps.postDate}</Card.Subtitle>
         <Card.Text>{commentProps.text}</Card.Text>
-        <Card.Link href='#'>Card Link</Card.Link>
-        <Card.Link href='#'>Another Link</Card.Link>
       </Card.Body>
     </Card>
   );

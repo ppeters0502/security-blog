@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "text": "This is words.",
+            "postID": 4,
+            "author": "Chuck Mangione",
+            "postDate": "6/2/2024"
+        },
+        {
+            "text": "This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words.",
+            "postID": 4,
+            "author": "AJ HamHands",
+            "postDate": "5/20/2024"
+        },
+        {
+            "text": "I really need to get my poop in a group.",
+            "postID": 16,
+            "author": "Patches93",
+            "postDate": "5/31/2024"
+        }
+    ]
+}
