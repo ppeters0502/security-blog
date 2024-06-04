@@ -1,22 +1,95 @@
 {
-    "comments": [
-        {
-            "text": "This is words.",
-            "postID": 4,
-            "author": "Chuck Mangione",
-            "postDate": "6/2/2024"
-        },
-        {
-            "text": "This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words.",
-            "postID": 4,
-            "author": "AJ HamHands",
-            "postDate": "5/20/2024"
-        },
-        {
-            "text": "I really need to get my poop in a group.",
-            "postID": 16,
-            "author": "Patches93",
-            "postDate": "5/31/2024"
-        }
-    ]
+  "comments": [
+    {
+      "text": "This is words.",
+      "postID": 4,
+      "author": "Chuck Mangione",
+      "postDate": "6/2/2024",
+      "id": "5e63"
+    },
+    {
+      "text": "This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words. This is more words.",
+      "postID": 4,
+      "author": "AJ HamHands",
+      "postDate": "5/20/2024",
+      "id": "2670"
+    },
+    {
+      "text": "I really need to get my poop in a group.",
+      "postID": 16,
+      "author": "Patches93",
+      "postDate": "5/31/2024",
+      "id": "dfda"
+    },
+    {
+      "id": "9bae",
+      "postID": 19,
+      "text": "This is a test comment.",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:07:34 PM"
+    },
+    {
+      "id": "3ac3",
+      "postID": 19,
+      "text": "Here is another test comment.",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:08:41 PM"
+    },
+    {
+      "id": "1618",
+      "postID": 18,
+      "text": "Here is a new test comment.",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:19:03 PM"
+    },
+    {
+      "id": "2a50",
+      "postID": 19,
+      "text": "Lets try this again with another test comment.",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:19:25 PM"
+    },
+    {
+      "id": "2a15",
+      "postID": 19,
+      "text": "<img src=1 onerror=alert(1)/>",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:20:28 PM"
+    },
+    {
+      "id": "a67f",
+      "postID": 16,
+      "text": "This is Pat Submitting a new comment!",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:41:12 PM"
+    },
+    {
+      "id": "5087",
+      "postID": 16,
+      "text": "Now I'll try one more right after the original one!",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:41:31 PM"
+    },
+    {
+      "id": "58ab",
+      "postID": 2,
+      "text": "I remember this, this was the first CTF walkthrough I did!",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:42:26 PM"
+    },
+    {
+      "id": "a38d",
+      "postID": 2,
+      "text": "Or was it?",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:42:32 PM"
+    },
+    {
+      "id": "92c9",
+      "postID": 17,
+      "text": "Hey look, that's AWS!",
+      "author": "Pat",
+      "postDate": "6/4/2024, 1:44:37 PM"
+    }
+  ]
 }

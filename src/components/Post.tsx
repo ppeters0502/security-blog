@@ -11,6 +11,7 @@ interface propsType {
   content: string | undefined;
   comments: SingleCommentProps[];
   onCommentSubmission: (comment: SingleCommentProps) => void;
+  postID: number;
 }
 
 const Post = (props: propsType) => {
@@ -37,7 +38,7 @@ const Post = (props: propsType) => {
         </ReactMarkdown>
       )}
       {props.comments.length > 0 && <h2>Comments</h2>}
-      <CommentSection comments={props.comments} onSubmitComment={props.onCommentSubmission} />
+      <CommentSection comments={props.comments} onSubmitComment={props.onCommentSubmission} postID={props.postID} />
     </Container>
   );
 };

@@ -21,7 +21,7 @@ const BlogContainer = () => {
   const [postCategory, setPostCategory] = React.useState<string>('');
   const [categoryFilter, setCategoryFilter] = React.useState<string>('');
   const [postComments, setPostComments] = React.useState<SingleCommentProps[]>(new Array<SingleCommentProps>());
-
+  const [postID, setPostID] = React.useState<number>(0);
   const getIdNumber = (): number => {
     var _idNumber: number = id ? Number(id) : 0;
     return _idNumber;
@@ -75,6 +75,7 @@ const BlogContainer = () => {
             setPublishedDate(_post.metaData['publishedDate']);
             setContent(_post.content);
             setSinglePost(true);
+            setPostID(_idNumber);
           }
         });
         if (!singlePost) {
@@ -165,14 +166,13 @@ const BlogContainer = () => {
     setPublishedDate(post.metaData['publishedDate']);
     setContent(post.content);
     setSinglePost(true);
+    setPostID(post.id);
   };
 
   const onCommentSubmission = (comment: SingleCommentProps) => {
     CommentService.createComment(comment).then((response: AxiosResponse) => {
       if (response.statusText === 'success') {
-        let _publishedComments = postComments;
-        _publishedComments.push(comment);
-        setPostComments(_publishedComments);
+        setPostComments([...postComments, comment]);
       }
     });
   };
@@ -185,7 +185,7 @@ const BlogContainer = () => {
     <>
       <Header />
       <Container>
-        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} comments={postComments} onCommentSubmission={onCommentSubmission} />}
+        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} comments={postComments} onCommentSubmission={onCommentSubmission} postID={postID} />}
         {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} onCategorySelection={onCategorySelection} categoryFilter={categoryFilter} />}
       </Container>
       <Footer />
