@@ -6,46 +6,46 @@ import SingleComment from './SingleComment';
 
 interface propsType {
   comments: SingleCommentProps[];
+  setPostComments: (event: any) => void;
   onSubmitComment: (props: SingleCommentProps) => void;
   postID: number;
+  commentAuthor: string;
+  commentText: string;
+  setCommentAuthor: (event: any) => void;
+  setCommentText: (event: any) => void;
 }
 
 const CommentSection = (props: propsType) => {
-  const [name, setName] = React.useState<string>('');
-  const [comment, setComment] = React.useState<string>('');
-  const [commentList, setCommentList] = React.useState<SingleCommentProps[]>(props.comments);
-
   const handleName = (event: any) => {
-    setName(event.target.value);
+    props.setCommentAuthor(event.target.value);
   };
   const handleComment = (event: any) => {
-    setComment(event.target.value);
+    props.setCommentText(event.target.value);
   };
   const handleSubmit = () => {
     let _newComment: SingleCommentProps = {
       postID: props.postID,
-      text: comment,
-      author: name,
+      text: props.commentText,
+      author: props.commentAuthor,
       postDate: new Date().toLocaleString(),
     };
     props.onSubmitComment(_newComment);
-    setComment('');
-    setName('');
-    setCommentList([...commentList, _newComment]);
+    props.setPostComments([...props.comments, _newComment]);
   };
 
   return (
     <Container>
-      {commentList.length > 0 && commentList.map((comment) => <SingleComment text={comment.text} postID={comment.postID} author={comment.author} postDate={comment.postDate} />)}
+      {props.comments.length > 0 &&
+        props.comments.map((comment, commentIndex) => <SingleComment key={commentIndex} text={comment.text} postID={comment.postID} author={comment.author} postDate={comment.postDate} />)}
       <h3>Submit a Comment</h3>
       <Form>
         <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
           <Form.Label>Name</Form.Label>
-          <Form.Control type='text' placeholder='Chuck' required value={name} onChange={handleName} />
+          <Form.Control type='text' placeholder='Chuck' required value={props.commentAuthor} onChange={handleName} />
         </Form.Group>
         <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
           <Form.Label>Comment</Form.Label>
-          <Form.Control as='textarea' rows={3} required value={comment} onChange={handleComment} />
+          <Form.Control as='textarea' rows={3} required value={props.commentText} onChange={handleComment} />
         </Form.Group>
         <Button onClick={handleSubmit}>Submit</Button>
       </Form>

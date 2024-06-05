@@ -22,6 +22,8 @@ const BlogContainer = () => {
   const [categoryFilter, setCategoryFilter] = React.useState<string>('');
   const [postComments, setPostComments] = React.useState<SingleCommentProps[]>(new Array<SingleCommentProps>());
   const [postID, setPostID] = React.useState<number>(0);
+  const [commentAuthor, setCommentAuthor] = React.useState<string>('');
+  const [commentText, setCommentText] = React.useState<string>('');
   const getIdNumber = (): number => {
     var _idNumber: number = id ? Number(id) : 0;
     return _idNumber;
@@ -58,6 +60,8 @@ const BlogContainer = () => {
     console.log('ID Number: ' + _idNumber);
     Promise.all([LocalDataService.getAllPostsWithFrontMatter()]).then((response) => {
       if (id && _idNumber > 0) {
+        setSinglePost(true);
+        setPostID(_idNumber);
         // Get Comments from single post
         CommentService.getCommentsFromPost(_idNumber).then((response: AxiosResponse<SingleCommentProps[]>) => {
           let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
@@ -74,8 +78,6 @@ const BlogContainer = () => {
             setTitle(_post.metaData['title']);
             setPublishedDate(_post.metaData['publishedDate']);
             setContent(_post.content);
-            setSinglePost(true);
-            setPostID(_idNumber);
           }
         });
         if (!singlePost) {
@@ -169,12 +171,13 @@ const BlogContainer = () => {
     setPostID(post.id);
   };
 
-  const onCommentSubmission = (comment: SingleCommentProps) => {
+  const onCommentSubmission = (comment: SingleCommentProps): boolean => {
     CommentService.createComment(comment).then((response: AxiosResponse) => {
-      if (response.statusText === 'success') {
-        setPostComments([...postComments, comment]);
-      }
+      setCommentText('');
+      setCommentAuthor('');
+      return response.statusText.toLowerCase() == 'success' ? true : false;
     });
+    return false;
   };
 
   //     title: string;
@@ -185,7 +188,21 @@ const BlogContainer = () => {
     <>
       <Header />
       <Container>
-        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} comments={postComments} onCommentSubmission={onCommentSubmission} postID={postID} />}
+        {singlePost && (
+          <Post
+            title={title}
+            publishedDate={publishedDate}
+            content={content}
+            comments={postComments}
+            setPostComments={setPostComments}
+            onCommentSubmission={onCommentSubmission}
+            postID={postID}
+            commentAuthor={commentAuthor}
+            commentText={commentText}
+            setCommentAuthor={setCommentAuthor}
+            setCommentText={setCommentText}
+          />
+        )}
         {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} onCategorySelection={onCategorySelection} categoryFilter={categoryFilter} />}
       </Container>
       <Footer />
