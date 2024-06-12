@@ -1,7 +1,7 @@
 ---
 id: 22
 title: 100 Days of Code - Day Nine and Ten (or maybe just nine)
-publishedDate: 06/010/2024
+publishedDate: 06/10/2024
 featureImage: https://i.imgur.com/Z5TnG8Kh.png
 tags:
   - 100_days
@@ -38,6 +38,13 @@ So obviously this goes against the purpose of the challenge, but I still want to
 
 
 Anyways, I have the GET comments Lambda working great, but am still working through the post. I'll have more updates tomorrow!
+
+
+
+## Updates from tomorrow
+Ok, I'm currently working on the blog post for today, but I think I'm going to run out of time before it hits midnight, and I want to keep my streak going, so here's a quick update. I now have the GET request for my comments in the app linked to my aws environment and working like a charm!!!
+I'm currently wrestling with the CORS headers on the post request, but I think I finally have everything else figured out with this one! 
+Again, I'll have more info in my next post!
 
 
 
