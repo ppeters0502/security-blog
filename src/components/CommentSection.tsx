@@ -30,7 +30,7 @@ const CommentSection = (props: propsType) => {
       postDate: new Date().toLocaleString(),
     };
     props.onSubmitComment(_newComment);
-    props.setPostComments([...props.comments, _newComment]);
+    props.setPostComments([_newComment, ...props.comments]);
   };
 
   return (
