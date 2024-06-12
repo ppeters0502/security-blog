@@ -7,9 +7,11 @@ import Footer from './Footer';
 import Header from './Header';
 import Post from './Post';
 import { LocalDataService } from './services/LocalDataService';
-import { CommentService } from '../services/API/CommentService';
+import { CommentService } from './services/CommentService';
 import { AxiosResponse } from 'axios';
 import { SingleCommentProps } from '../types/SingleCommentProps';
+import { DynamoResponse } from '../types/DynamoResponse';
+import { DynamoSingleComment } from '../types/DynamoSingleComment';
 
 const BlogContainer = () => {
   const { id, category } = useParams();
@@ -63,11 +65,18 @@ const BlogContainer = () => {
         setSinglePost(true);
         setPostID(_idNumber);
         // Get Comments from single post
-        CommentService.getCommentsFromPost(_idNumber).then((response: AxiosResponse<SingleCommentProps[]>) => {
+        CommentService.getCommentsFromPost(_idNumber).then((response: AxiosResponse<DynamoResponse>) => {
           let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
-          response.data.forEach((_comment: SingleCommentProps) => {
-            if (_comment.postID === _idNumber) {
-              _publishedComments.push(_comment);
+          console.log(JSON.stringify(response));
+          response.data.Items.forEach((_comment: DynamoSingleComment) => {
+            if (_comment.post_id === _idNumber) {
+              let _newComment: SingleCommentProps = {
+                postID: _comment.post_id,
+                text: _comment.comment_text,
+                postDate: _comment.comment_date,
+                author: _comment.author,
+              };
+              _publishedComments.push(_newComment);
             }
           });
           setPostComments(_publishedComments);
@@ -155,11 +164,18 @@ const BlogContainer = () => {
 
   const onPostSelection = (post: frontMatterPost) => {
     // Get Comments from single post
-    CommentService.getCommentsFromPost(post.id).then((response: AxiosResponse<SingleCommentProps[]>) => {
+    CommentService.getCommentsFromPost(post.id).then((response: AxiosResponse<DynamoResponse>) => {
       let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
-      response.data.forEach((_comment: SingleCommentProps) => {
-        if (_comment.postID === post.id) {
-          _publishedComments.push(_comment);
+      console.log(JSON.stringify(response));
+      response.data.Items.forEach((_comment: DynamoSingleComment) => {
+        if (_comment.post_id === post.id) {
+          let _newComment: SingleCommentProps = {
+            postID: _comment.post_id,
+            text: _comment.comment_text,
+            postDate: _comment.comment_date,
+            author: _comment.author,
+          };
+          _publishedComments.push(_newComment);
         }
       });
       setPostComments(_publishedComments);
