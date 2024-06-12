@@ -28,6 +28,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Generate environment variables
+        run: |
+          echo "${{ secrets.ENV_CONFIG }}" > .env
       - name: NPM Install
         run: |
           npm install --no-audit

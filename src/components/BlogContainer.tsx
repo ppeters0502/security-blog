@@ -7,6 +7,11 @@ import Footer from './Footer';
 import Header from './Header';
 import Post from './Post';
 import { LocalDataService } from './services/LocalDataService';
+import { CommentService } from './services/CommentService';
+import { AxiosResponse } from 'axios';
+import { SingleCommentProps } from '../types/SingleCommentProps';
+import { DynamoResponse } from '../types/DynamoResponse';
+import { DynamoSingleComment } from '../types/DynamoSingleComment';
 
 const BlogContainer = () => {
   const { id, category } = useParams();
@@ -17,7 +22,10 @@ const BlogContainer = () => {
   const [content, setContent] = React.useState<string>('');
   const [postCategory, setPostCategory] = React.useState<string>('');
   const [categoryFilter, setCategoryFilter] = React.useState<string>('');
-
+  const [postComments, setPostComments] = React.useState<SingleCommentProps[]>(new Array<SingleCommentProps>());
+  const [postID, setPostID] = React.useState<number>(0);
+  const [commentAuthor, setCommentAuthor] = React.useState<string>('');
+  const [commentText, setCommentText] = React.useState<string>('');
   const getIdNumber = (): number => {
     var _idNumber: number = id ? Number(id) : 0;
     return _idNumber;
@@ -54,13 +62,31 @@ const BlogContainer = () => {
     console.log('ID Number: ' + _idNumber);
     Promise.all([LocalDataService.getAllPostsWithFrontMatter()]).then((response) => {
       if (id && _idNumber > 0) {
+        setSinglePost(true);
+        setPostID(_idNumber);
+        // Get Comments from single post
+        CommentService.getCommentsFromPost(_idNumber).then((response: AxiosResponse<DynamoResponse>) => {
+          let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
+          console.log(JSON.stringify(response));
+          response.data.Items.forEach((_comment: DynamoSingleComment) => {
+            if (_comment.post_id === _idNumber) {
+              let _newComment: SingleCommentProps = {
+                postID: _comment.post_id,
+                text: _comment.comment_text,
+                postDate: _comment.comment_date,
+                author: _comment.author,
+              };
+              _publishedComments.push(_newComment);
+            }
+          });
+          setPostComments(_publishedComments);
+        });
         let _posts: frontMatterPost[] = response[0];
         _posts.forEach((_post: frontMatterPost) => {
           if (_post.id === _idNumber) {
             setTitle(_post.metaData['title']);
             setPublishedDate(_post.metaData['publishedDate']);
             setContent(_post.content);
-            setSinglePost(true);
           }
         });
         if (!singlePost) {
@@ -137,10 +163,37 @@ const BlogContainer = () => {
   };
 
   const onPostSelection = (post: frontMatterPost) => {
+    // Get Comments from single post
+    CommentService.getCommentsFromPost(post.id).then((response: AxiosResponse<DynamoResponse>) => {
+      let _publishedComments: SingleCommentProps[] = new Array<SingleCommentProps>();
+      console.log(JSON.stringify(response));
+      response.data.Items.forEach((_comment: DynamoSingleComment) => {
+        if (_comment.post_id === post.id) {
+          let _newComment: SingleCommentProps = {
+            postID: _comment.post_id,
+            text: _comment.comment_text,
+            postDate: _comment.comment_date,
+            author: _comment.author,
+          };
+          _publishedComments.push(_newComment);
+        }
+      });
+      setPostComments(_publishedComments);
+    });
     setTitle(post.metaData['title']);
     setPublishedDate(post.metaData['publishedDate']);
     setContent(post.content);
     setSinglePost(true);
+    setPostID(post.id);
+  };
+
+  const onCommentSubmission = (comment: SingleCommentProps): boolean => {
+    CommentService.createComment(comment).then((response: AxiosResponse) => {
+      setCommentText('');
+      setCommentAuthor('');
+      return response.statusText.toLowerCase() == 'success' ? true : false;
+    });
+    return false;
   };
 
   //     title: string;
@@ -151,7 +204,21 @@ const BlogContainer = () => {
     <>
       <Header />
       <Container>
-        {singlePost && <Post title={title} publishedDate={publishedDate} content={content} />}
+        {singlePost && (
+          <Post
+            title={title}
+            publishedDate={publishedDate}
+            content={content}
+            comments={postComments}
+            setPostComments={setPostComments}
+            onCommentSubmission={onCommentSubmission}
+            postID={postID}
+            commentAuthor={commentAuthor}
+            commentText={commentText}
+            setCommentAuthor={setCommentAuthor}
+            setCommentText={setCommentText}
+          />
+        )}
         {!singlePost && <Blog posts={posts} category={postCategory} onPostSelection={onPostSelection} onCategorySelection={onCategorySelection} categoryFilter={categoryFilter} />}
       </Container>
       <Footer />
