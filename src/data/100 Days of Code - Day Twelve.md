@@ -1,3 +1,11 @@
+---
+id: 24
+title: 100 Days of Code - Day Twelve
+publishedDate: 06/13/2024
+featureImage: https://i.imgur.com/7vFLIaS.gif
+tags:
+  - 100_days
+---
 ## Intro
 Hello Internet!
 
