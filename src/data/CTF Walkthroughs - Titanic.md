@@ -7,18 +7,6 @@ tags:
   - ctf_walkthroughs
 ---
 
----
-
-id: 27
-title: Where things are at right now
-publishedDate: 11/14/2024
-featureImage: https://i.imgur.com/Lw2Lk8Fh.png
-tags:
-
-- misc.
-
----
-
 ## Intro
 
 Hello Internet!
