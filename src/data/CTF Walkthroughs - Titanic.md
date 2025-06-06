@@ -1,7 +1,7 @@
 ---
 id: 28
 title: CTF Walkthroughs - Titanic
-publishedDate: 2025-06-05
+publishedDate: 06/05/2025
 featureImage: https://i.imgur.com/mw5mrq5h.png
 tags:
   - ctf_walkthroughs
@@ -17,7 +17,7 @@ My new job is still in Application Security, but there's a renewed focus on trai
 
 In other news, I got to see firsthand what happens when I don't spend as much time working through CTFs and pentesting in my free time at this years KernelCon!
 
-[Insert picture of badge from KernelCon]
+![04a6df45df5cff280f2e2764c18ce674.png](https://i.imgur.com/m6H4utZ.png)
 
 This year I went to KernelCon with a few of my coworkers from my previous job and spent the entire week there at workshops, the different villages, talks, and their CTF tournament! Unfortunately, I'm apparently very rusty at these types of events since I haven't really done any serious CTFs or pentesting (outside of my job) for over a year, and I was a bit of deadweight on my team, not getting any flags whatsoever :(.
 
